@@ -15,7 +15,7 @@ const Logo: React.FC = () => {
           <Title>
             <AppleOutlined />
           </Title>
-          <Title>AppleStore</Title>
+          <Title>博客</Title>
         </Space>
       </Link>
     </div>
