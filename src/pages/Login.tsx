@@ -9,8 +9,17 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const onFinish = (values: UserInfo) => {
-    if (values.username === "admin" && values.password === "admin") {
-      return navigate("/");
+    const { username, password, remember } = values;
+
+    if (remember) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+    } else {
+      localStorage.clear();
+    }
+    if (username === "admin" && password === "admin") {
+      navigate("/");
+      return;
     }
   };
 
@@ -43,7 +52,6 @@ const Login: React.FC = () => {
             <Form.Item name="remember" valuePropName="checked" noStyle>
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
-            <a href="">Forgot password</a>
           </Flex>
         </Form.Item>
         <Form.Item>

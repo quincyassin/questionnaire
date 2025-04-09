@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import styles from "./ManageLayout.module.scss";
 import { Button, Space, Divider } from "antd";
 import {
@@ -10,6 +10,9 @@ import {
 } from "@ant-design/icons";
 
 const ManageLayout: React.FC = () => {
+
+  const nav = useNavigate();
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -18,13 +21,13 @@ const ManageLayout: React.FC = () => {
             创建问卷
           </Button>
           <Divider />
-          <Button type="default" size="large" icon={<BarsOutlined />}>
+          <Button type="default" size="large" icon={<BarsOutlined />} onClick={() => nav("/manage/list")}>
             我的问卷
           </Button>
-          <Button type="default" size="large" icon={<StarOutlined />}>
+          <Button type="default" size="large" icon={<StarOutlined />} onClick={() => nav("/manage/star")}>
             星标问卷
           </Button>
-          <Button type="default" size="large" icon={<DeleteOutlined />}>
+          <Button type="default" size="large" icon={<DeleteOutlined />} onClick={() => nav("/manage/trash")}>
             回收站
           </Button>
         </Space>
